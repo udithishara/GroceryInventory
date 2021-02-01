@@ -1,46 +1,68 @@
 <template>
   <main>
-    <h1 class="text-center">Add new Item</h1>
+    <Heading heading="Add New Item" />
 
-    Add New Item
+    <form method="post" @submit.prevent="checkForm" class="form relative">
+      <input
+        type="text"
+        name="Search"
+        id="groceryItemName"
+        v-model="groceryItem.name"
+        placeholder="Name"
+        autocomplete="off"
+        class="bg-white w-full h-10 px-5 pr-10 mb-4 rounded-full text-sm focus:outline-none"
+      />
 
-    <form method="post" @submit.prevent="checkForm" class="lead-form">
+      <input
+        type="date"
+        class="bg-white w-full h-10 px-5 pr-3 mb-4 rounded-full text-sm focus:outline-none"
+        id="groceryItemExpiresOn"
+        v-model="groceryItem.expiresOn"
+        placeholder="Expires On*"
+      />
+
       <div>
-        <label for="groceryItemName" class="sr-only">Name*</label>
         <input
-          type="text"
-          class="form-control"
-          id="groceryItemName"
-          v-model="groceryItem.name"
-          placeholder="Name*"
+          type="submit"
+          value="Add Item"
+          class="bg-gray-900 hover:bg-gray-700 text-white font-light py-2 mb-4 rounded-full w-full focus:outline-none mb-3"
         />
       </div>
 
-      <div>
-        <label for="groceryItemExpiresOn" class="sr-only">Expires On*</label>
-        <input
-          type="date"
-          class="form-control"
-          id="groceryItemExpiresOn"
-          v-model="groceryItem.expiresOn"
-          placeholder="Expires On*"
-        />
-      </div>
+      <transition name="fade">
+        <div
+          v-if="formErrors.length"
+          class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 mb-4 rounded relative"
+          role="alert"
+        >
+          <strong class="font-bold">An Error has occured</strong>
+          <span
+            v-for="(error, i) in formErrors"
+            :key="i"
+            class="block sm:inline mt-2"
+          >
+            - {{ error }}
+          </span>
+        </div>
+      </transition>
 
-      <div v-if="formErrors.length">
-        <p v-for="(error, i) in formErrors" :key="i">{{ error }}</p>
+      <!-- <transition name="fade"> -->
+      <div
+        v-if="itemSubmitted"
+        role="alert"
+        class="px-4 py-3 leading-normal text-green-700 bg-green-100 rounded-lg"
+      >
+        <p class="font-bold">Item has been added</p>
       </div>
-
-      <div>
-        <input type="submit" value="Add Time" />
-      </div>
+      <!-- </transition> -->
     </form>
   </main>
 </template>
 
 <script>
-import firebase from '../firebase'
+import { itemsCollection } from '@/firebase'
 import timeFromNow from '@/utils/timeFromNow'
+import Heading from '@/components/Heading'
 
 export default {
   name: 'AddNewItem',
@@ -48,12 +70,16 @@ export default {
     return {
       itemSubmitted: false,
       formErrors: [],
+      show: true,
       groceryItem: {
         name: '',
         expiresOn: '',
         boughtOn: ''
       }
     }
+  },
+  components: {
+    Heading
   },
   methods: {
     checkForm() {
@@ -88,11 +114,7 @@ export default {
         boughtOn: new Date()
       }
 
-      await firebase
-        .firestore()
-        .collection('items')
-        .add(itemInfo)
-        .then((this.submitItem = true))
+      await itemsCollection.add(itemInfo).then((this.itemSubmitted = true))
     }
   }
 }

@@ -1,16 +1,23 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Item List</router-link> |
-      <router-link to="/add-new">Add New Item</router-link>
+  <div id="app" class="flex min-h-screen bg-gray-200 text-gray-800">
+    <div class="p-4 w-full pb-16">
+      <Header />
+      <router-view />
     </div>
-    <router-view />
+    <Nav />
   </div>
 </template>
 
 <script>
+import Nav from '@/components/Nav'
+import Header from '@/components/Header'
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    Nav,
+    Header
+  }
 }
 </script>
 

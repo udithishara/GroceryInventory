@@ -14,10 +14,10 @@ const routes = [
     path: '/add-new',
     name: 'Add New Item',
     // route level code-splitting
-    // this generates a separate chunk (claim-portal.[hash].js) for this route
+    // this generates a separate chunk (add-new-item.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "claim-portal" */ '../views/AddNewItem.vue')
+      import(/* webpackChunkName: "add-new-item" */ '../views/AddNewItem.vue')
   }
 ]
 

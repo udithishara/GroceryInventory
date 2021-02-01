@@ -1,6 +1,7 @@
 // Store Firebase config and handle initialization
 import firebase from 'firebase/app'
 import 'firebase/firestore'
+import 'firebase/auth'
 
 const config = {
   apiKey: process.env.VUE_APP_APIKEY,
@@ -12,6 +13,13 @@ const config = {
 }
 
 firebase.initializeApp(config)
-firebase.firestore()
 
-export default firebase
+// utils
+const db = firebase.firestore()
+const auth = firebase.auth()
+
+// collection references
+const itemsCollection = db.collection('items')
+
+// export utils/refs
+export { db, auth, itemsCollection }
