@@ -4,6 +4,7 @@ import router from './router/index'
 import { auth } from './firebase'
 
 import '@/assets/styles/tailwind.css'
+import './registerServiceWorker'
 
 Vue.config.productionTip = false
 

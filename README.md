@@ -22,3 +22,8 @@ yarn lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+### Credits
+
+- Icons from [Wanicon](https://www.flaticon.com/authors/wanicon)
