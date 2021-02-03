@@ -53,12 +53,24 @@
           <p class="font-bold">Item has been added</p>
         </div>
       </transition>
+
+      <div
+        class="px-4 py-3 leading-normal text-red-100 bg-red-700 rounded-lg"
+        role="alert"
+        v-if="isLoggedIn && !isAllowedToWrite"
+      >
+        <p>
+          You will not be able to add items to this since this is our household
+          item list, refer to the <a href="#" target="_blank">Article</a> for
+          more info
+        </p>
+      </div>
     </form>
   </section>
 </template>
 
 <script>
-import { itemsCollection } from '@/firebase'
+import { auth, itemsCollection } from '@/firebase'
 import timeFromNow from '@/utils/timeFromNow'
 import Heading from '@/components/Heading'
 
@@ -78,6 +90,18 @@ export default {
   },
   components: {
     Heading
+  },
+  computed: {
+    isLoggedIn() {
+      return auth.currentUser ? true : false
+    },
+    isAllowedToWrite() {
+      const allowedUidArray = [
+        'PiXnyUTV7MPb5JuSsz1DWgbJZXt1',
+        'PiXnyUTV7MPb5JuSsz1DWgbJZXt2'
+      ]
+      return allowedUidArray.includes(auth.currentUser.uid)
+    }
   },
   methods: {
     checkForm() {
