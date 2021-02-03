@@ -1,8 +1,8 @@
 <template>
-  <main>
+  <section>
     <Heading heading="Add New Item" />
 
-    <form method="post" @submit.prevent="checkForm" class="form relative">
+    <form method="post" @submit.prevent="checkForm" class="form">
       <input
         type="text"
         name="Search"
@@ -10,7 +10,7 @@
         v-model="groceryItem.name"
         placeholder="Name"
         autocomplete="off"
-        class="bg-white w-full h-10 px-5 pr-10 mb-4 rounded-full text-sm focus:outline-none"
+        class="bg-white w-full h-10 px-5 mb-4 rounded-full text-sm focus:outline-none"
       />
 
       <input
@@ -21,13 +21,11 @@
         placeholder="Expires On*"
       />
 
-      <div>
-        <input
-          type="submit"
-          value="Add Item"
-          class="bg-gray-900 hover:bg-gray-700 text-white font-light py-2 mb-4 rounded-full w-full focus:outline-none mb-3"
-        />
-      </div>
+      <input
+        type="submit"
+        value="Add Item"
+        class="bg-gray-900 hover:bg-gray-700 text-white font-light py-2 mb-4 rounded-full w-full focus:outline-none"
+      />
 
       <transition name="fade">
         <div
@@ -46,17 +44,17 @@
         </div>
       </transition>
 
-      <!-- <transition name="fade"> -->
-      <div
-        v-if="itemSubmitted"
-        role="alert"
-        class="px-4 py-3 leading-normal text-green-700 bg-green-100 rounded-lg"
-      >
-        <p class="font-bold">Item has been added</p>
-      </div>
-      <!-- </transition> -->
+      <transition name="fade">
+        <div
+          v-if="itemSubmitted"
+          role="alert"
+          class="px-4 py-3 leading-normal text-green-700 bg-green-100 rounded-lg"
+        >
+          <p class="font-bold">Item has been added</p>
+        </div>
+      </transition>
     </form>
-  </main>
+  </section>
 </template>
 
 <script>
@@ -65,7 +63,7 @@ import timeFromNow from '@/utils/timeFromNow'
 import Heading from '@/components/Heading'
 
 export default {
-  name: 'AddNewItem',
+  name: 'AddNew',
   data() {
     return {
       itemSubmitted: false,

@@ -1,5 +1,7 @@
 <template>
-  <div class="bg-white fixed bottom-0 w-full border-t border-gray-200 flex">
+  <div
+    class="bg-white fixed bottom-0 left-0 w-full border-t border-gray-200 flex"
+  >
     <router-link
       to="/"
       class="flex flex-grow items-center justify-center p-2 text-gray-500"

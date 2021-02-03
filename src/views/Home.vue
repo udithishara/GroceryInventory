@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <section>
     <Heading
       heading="Updated On"
       :subHeading="this.getFormatedLastUpdatedDate"
@@ -14,7 +14,7 @@
         autocomplete="off"
         class="bg-white w-full h-10 px-5 pr-10 rounded-full text-sm focus:outline-none"
       />
-      <span type="submit" class="absolute right-0 top-0 mt-3 mr-4">
+      <span type="submit" class="absolute right-0 top-0 my-3 mr-4">
         <svg
           class="h-4 w-4 fill-current"
           xmlns="http://www.w3.org/2000/svg"
@@ -37,7 +37,7 @@
     </div>
 
     <ItemCard v-for="item in filteredItems" :key="item.docUid" :item="item" />
-  </div>
+  </section>
 </template>
 
 <script>
@@ -46,7 +46,7 @@ import ItemCard from '@/components/ItemCard'
 import Heading from '@/components/Heading'
 
 export default {
-  name: 'ItemsList',
+  name: 'Home',
   data() {
     return {
       items: [],

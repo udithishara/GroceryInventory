@@ -1,11 +1,12 @@
 <template>
-  <div id="app" class="flex min-h-screen bg-gray-200 text-gray-800">
-    <div class="p-4 w-full pb-16">
-      <Header />
-      <router-view />
-    </div>
+  <main
+    id="app"
+    class="bg-gray-200 flex flex-col min-h-screen p-4 pb-16 text-gray-800 w-full"
+  >
+    <Header />
+    <router-view />
     <Nav />
-  </div>
+  </main>
 </template>
 
 <script>
