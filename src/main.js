@@ -6,7 +6,6 @@ import { auth } from './firebase'
 import '@/assets/styles/tailwind.css'
 
 Vue.config.productionTip = false
-Vue.config.ignoredElements = ['Item']
 
 let app
 auth.onAuthStateChanged(() => {

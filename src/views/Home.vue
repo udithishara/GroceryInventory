@@ -14,7 +14,7 @@
         autocomplete="off"
         class="bg-white w-full h-10 px-5 pr-10 rounded-full text-sm focus:outline-none"
       />
-      <span type="submit" class="absolute right-0 top-0 my-3 mr-4">
+      <span class="absolute right-0 top-0 my-3 mr-4">
         <svg
           class="h-4 w-4 fill-current"
           xmlns="http://www.w3.org/2000/svg"
@@ -59,22 +59,26 @@ export default {
     ItemCard
   },
   created() {
-    itemsCollection.orderBy('expiresOn', 'asc').onSnapshot(querySnap => {
-      this.items = querySnap.docs.map(doc => {
-        let itemData = doc.data()
-        itemData['docUid'] = doc.id
-        return itemData
-      })
-    })
-
-    itemsCollection
-      .orderBy('boughtOn', 'desc')
-      .limit(1)
-      .onSnapshot(querySnap => {
-        this.singleItem = querySnap.docs.map(doc => {
-          return doc.data().boughtOn.toDate()
+    try {
+      itemsCollection.orderBy('expiresOn', 'asc').onSnapshot(querySnap => {
+        this.items = querySnap.docs.map(doc => {
+          let itemData = doc.data()
+          itemData['docUid'] = doc.id
+          return itemData
         })
       })
+
+      itemsCollection
+        .orderBy('boughtOn', 'desc')
+        .limit(1)
+        .onSnapshot(querySnap => {
+          this.singleItem = querySnap.docs.map(doc => {
+            return doc.data().boughtOn.toDate()
+          })
+        })
+    } catch (error) {
+      console.log(error.message)
+    }
   },
   computed: {
     getFormatedLastUpdatedDate() {

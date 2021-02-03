@@ -15,7 +15,7 @@
 
       <input
         type="date"
-        class="bg-white w-full h-10 px-5 pr-3 mb-4 rounded-full text-sm focus:outline-none"
+        class="bg-white w-full h-10 px-5 pr-3 mb-4 rounded-full text-sm focus:outline-none appearance-none"
         id="groceryItemExpiresOn"
         v-model="groceryItem.expiresOn"
         placeholder="Expires On*"
@@ -60,9 +60,9 @@
         v-if="isLoggedIn && !isAllowedToWrite"
       >
         <p>
-          You will not be able to add items to this since this is our household
-          item list, refer to the <a href="#" target="_blank">Article</a> for
-          more info
+          You will not be able to add items to this Database since this my
+          personal Database, refer to the
+          <a href="#" target="_blank">Article</a> for more info
         </p>
       </div>
     </form>
@@ -136,7 +136,20 @@ export default {
         boughtOn: new Date()
       }
 
-      await itemsCollection.add(itemInfo).then((this.itemSubmitted = true))
+      try {
+        await itemsCollection
+          .add(itemInfo)
+          .then(() => {
+            this.itemSubmitted = true
+          })
+          .catch(error => {
+            // this.errorMessage = 'Error - ' + error.message
+            throw error
+          })
+      } catch (error) {
+        alert(error.message)
+      }
+      // await itemsCollection.add(itemInfo).then((this.itemSubmitted = true))
     }
   }
 }

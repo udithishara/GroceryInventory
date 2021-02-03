@@ -42,8 +42,7 @@ export default {
   methods: {
     login() {
       auth.signInWithPopup(GoogleAuthProvider).then(
-        user => {
-          console.log(user)
+        () => {
           this.$router.replace('add-new')
         },
         err => {

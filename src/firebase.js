@@ -17,7 +17,7 @@ firebase.initializeApp(config)
 // utils
 const db = firebase.firestore()
 const auth = firebase.auth()
-const GoogleAuthProvider = new firebase.auth.GoogleAuthProvider();
+const GoogleAuthProvider = new firebase.auth.GoogleAuthProvider()
 
 // collection references
 const itemsCollection = db.collection('items')

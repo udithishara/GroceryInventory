@@ -33,8 +33,4 @@ export default {
 #nav {
   margin-bottom: 1rem;
 }
-
-Item {
-  display: block;
-}
 </style>
