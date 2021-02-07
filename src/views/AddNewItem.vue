@@ -98,7 +98,7 @@ export default {
     isAllowedToWrite() {
       const allowedUidArray = [
         'PiXnyUTV7MPb5JuSsz1DWgbJZXt1',
-        'PiXnyUTV7MPb5JuSsz1DWgbJZXt2'
+        'DVKANekdBXVfquOWZEO4xXAMowA2'
       ]
       return allowedUidArray.includes(auth.currentUser.uid)
     }
