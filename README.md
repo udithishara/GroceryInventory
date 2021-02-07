@@ -1,4 +1,15 @@
-# groceryinventory
+# Grocery Inventory Reminder
+
+A small app which sends a daily reminder of grocery items that'll be expiring soon
+
+## Built Using
+- Google Firebase (Authentication, Cloud Firestore)
+- Vue.js
+- Tailwind CSS
+- Vercel
+- Node.js
+- Github Actions
+- Telegram Messenger
 
 ## Project setup
 ```
