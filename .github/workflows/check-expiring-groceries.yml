@@ -1,7 +1,5 @@
 name: Check Expiring Groceries
-on:
-  schedule:
-    - cron: '30 5 * * *'
+on: push
 jobs:
   groceries-scheduler:
     runs-on: ubuntu-latest
