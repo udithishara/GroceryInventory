@@ -1,4 +1,4 @@
-# Grocery Inventory Reminder - ![Check Expiring Groceries](https://github.com/udithishara/GroceryInventory/workflows/Check%20Expiring%20Groceries/badge.svg?branch=master)
+# Grocery Inventory Reminder
 
 A small app which sends a daily reminder of grocery items that'll be expiring soon
 
@@ -8,7 +8,7 @@ A small app which sends a daily reminder of grocery items that'll be expiring so
 - Tailwind CSS
 - Vercel
 - Node.js
-- Github Actions
+- Github Actions - ![Check Expiring Groceries](https://github.com/udithishara/GroceryInventory/workflows/Check%20Expiring%20Groceries/badge.svg?branch=master)
 - Telegram Messenger
 
 ## Project setup
