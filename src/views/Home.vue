@@ -77,7 +77,7 @@ export default {
           })
         })
     } catch (error) {
-      console.log(error.message)
+      alert(error.message)
     }
   },
   computed: {

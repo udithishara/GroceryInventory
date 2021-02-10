@@ -1,5 +1,8 @@
 <template>
-  <div class="col-span-12 sm:col-span-6 md:col-span-3 mb-3 relative">
+  <div
+    v-if="this.formattedExpiresOnDate.when !== 'past'"
+    class="col-span-12 sm:col-span-6 md:col-span-3 mb-3 relative"
+  >
     <div class="flex flex-row bg-white shadow-sm rounded p-4">
       <div class="flex flex-col flex-grow">
         <div class="text-sm text-gray-500">{{ item.name }}</div>

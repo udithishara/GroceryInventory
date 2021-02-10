@@ -1,10 +1,8 @@
-# This is a basic workflow to help you get started with Actions
-
 name: Check Expiring Groceries
 
 on:
   schedule:	
-    - cron: '0 * * * *'
+    - cron: '0 5 * * *'
 
 jobs:
   scheduler:

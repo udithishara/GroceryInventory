@@ -143,13 +143,11 @@ export default {
             this.itemSubmitted = true
           })
           .catch(error => {
-            // this.errorMessage = 'Error - ' + error.message
             throw error
           })
       } catch (error) {
         alert(error.message)
       }
-      // await itemsCollection.add(itemInfo).then((this.itemSubmitted = true))
     }
   }
 }
