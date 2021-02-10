@@ -141,12 +141,20 @@ export default {
           .add(itemInfo)
           .then(() => {
             this.itemSubmitted = true
+            this.resetForm()
           })
           .catch(error => {
             throw error
           })
       } catch (error) {
         alert(error.message)
+      }
+    },
+    resetForm() {
+      if (this.itemSubmitted) {
+        this.groceryItem.name = ''
+        this.groceryItem.expiresOn = ''
+        this.groceryItem.boughtOn = ''
       }
     }
   }
