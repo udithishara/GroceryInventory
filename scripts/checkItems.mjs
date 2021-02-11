@@ -79,7 +79,9 @@ const processResults = results => {
     }
   }
 
-  postTelegrameBot(expiredItems)
+  expiredItems.length > 0
+    ? postTelegrameBot(expiredItems)
+    : console.log('Nothing is expiring within next 7 days')
 }
 
 /**
